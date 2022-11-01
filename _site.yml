@@ -1,9 +1,9 @@
-name: "Yay internet!"
+name: "NIKLAS HESS"
 output_dir: "."
 navbar:
-  title: "Home"
+  title: "NIKLAS HESS"
   right:
-    - text: "About"
+    - text: "ABOUT ME"
       href: about.html
     - icon: fa-envelope fa-lg
       href: mailto:<nh2706@cumc.columbia.edu>
