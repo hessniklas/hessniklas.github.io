@@ -1,7 +1,26 @@
 ---
 title: "NIKLAS HESS"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ### Welcome to my personal website
 
-For business or personal inquiries, please reach out via Email or LinkedIn
+This website is constructed as an initial introduction to Niklas Hess, with a particular focus on his **[professional background](about.html)** and **[data science work](dashboard.html)**.
+
+### Professional Life
+
+Niklas is a proactive financial analyst, entrepreneur, and global thinker, who strives to create win-win situations.
+
+During his undergraduate degree, Niklas started his first company, Campus Tutor, providing other students with peer-to-peer tutoring services through a fully integrated online platform. After successfully exiting that company, Niklas gained experience at several high-profile companies, including Clifford Chance and Boston Consluting Group. 
+
+Longing for direct impact and involvement, Niklas found his way into Private Equity, currently working as Vice-President at a family office backed private investment firm, Stone Arch Group. There, he focuses on creating efficiency at key portfolio companies through hands-on support and an analytical mind-set.
+
+Simultaneously, Niklas is also studying in his second year at Columbia University, pursuing a Master's in Public Health, and obtaining his law license in Spain.
+
+
+### Private Life 
+
+In his private life, Niklas is an avid **[homecook](https://www.mindfoodness.today)** and sports aficionado. He is a loyal friend and partner, and is passionate about traveling and exploring the unknown. 

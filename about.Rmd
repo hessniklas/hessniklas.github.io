@@ -4,6 +4,6 @@ title: "ABOUT ME"
 
 ### Academic and professional experience
 
-For business or personal inquiries, please reach out via Email or LinkedIn
+For business or personal inquiries, please reach out via **[Email](mailto:<nh2706@cumc.columbia.edu>)** or **[LinkedIn](https://www.linkedin.com/in/niklas-hess/)**.
 
 <img src="images/Resume_NiklasHess.pdf" style="width:100%">
