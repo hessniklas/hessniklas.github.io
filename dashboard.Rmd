@@ -1,0 +1,69 @@
+---
+title: "NY NOAA Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(flexdashboard)
+library(plotly)
+```
+
+```{r}
+library(p8105.datasets)
+data("ny_noaa")
+```
+
+
+
+```{r, include = FALSE}
+
+clean_noaa_df = ny_noaa %>%
+  janitor::clean_names() %>%
+  separate(date, into = c("year", "month_date", "day"), sep = '-') %>%
+  mutate(month_date = as.numeric(month_date),
+         year = as.factor(year),
+         month_date = factor(month.abb[month_date], levels = month.abb),
+         tmax = as.numeric(tmax)/10,
+         tmin = as.numeric(tmin)/10,
+         prcp = as.numeric(prcp)/10) %>%
+  select(prcp, tmin, tmax, year, month_date, id) %>%
+  drop_na(tmax, tmin, prcp) %>%
+  sample_n(500)
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+month_temp = clean_noaa_df %>%
+    mutate(text_label = str_c("Tmax: ºC", tmax, "\nTmin: ºC", tmin),
+         ) %>% 
+  plot_ly(
+    x = ~month_date, y = ~tmax, type = "scatter", mode = "markers",
+    color = ~factor(year, ordered=TRUE), text = ~text_label, alpha = 0.5, colors = "viridis")
+
+month_temp
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
