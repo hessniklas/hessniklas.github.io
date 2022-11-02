@@ -41,24 +41,8 @@ clean_noaa_df = ny_noaa %>%
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Chart A - Boxplot showing Max_Temperature distributions by Year
 
-```{r}
-month_temp = clean_noaa_df %>%
-  group_by(year, month_date) %>%
-  summarize(tmin = mean(tmin), tmax = mean(tmax)) %>%
-  mutate(text_label = str_c("Tmax: ºC ", tmax, "\nTmin: ºC ", tmin)) %>% 
-  plot_ly(
-    x = ~month_date, y = ~tmin, type = "scatter", mode = "lines",
-    color = ~factor(year, order = TRUE), text = ~text_label, alpha = 0.5, colors = "viridis")
-
-month_temp
-```
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
 
 ```{r}
 max_temp = clean_noaa_df %>%
@@ -67,7 +51,24 @@ max_temp = clean_noaa_df %>%
 max_temp
 ```
 
-### Chart C
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B - Barplot showing Min_Temperature by Month and Year
+
+```{r}
+month_temp = clean_noaa_df %>%
+  group_by(year, month_date) %>%
+  summarize(tmin = mean(tmin), tmax = mean(tmax)) %>%
+  mutate(text_label = str_c("Tmax: ºC ", tmax, "\nTmin: ºC ", tmin)) %>% 
+  plot_ly(
+    x = ~month_date, y = ~tmin, type = "bar",
+    color = ~factor(year, order = TRUE), text = ~text_label, alpha = 0.5, colors = "viridis")
+
+month_temp
+```
+
+### Chart C - GGPLOT Object showing Scatterplot with Min_Temperatures and Max_Temperatures by Year
 
 ```{r}
 maxmin_plot = clean_noaa_df %>%
