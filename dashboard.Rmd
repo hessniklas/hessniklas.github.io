@@ -46,7 +46,7 @@ Column {data-width=650}
 
 ```{r}
 max_temp = clean_noaa_df %>%
-  plot_ly(y = ~tmax, color = ~factor(year, ordered = TRUE), type = "box", 
+  plot_ly(y = ~tmax, color = ~factor(year, order = TRUE), type = "box", 
           colors = "viridis") %>%
   layout(xaxis = list(title = "Years"),
          yaxis = list(title = "Max Temp (C)"))
@@ -74,17 +74,16 @@ month_temp = clean_noaa_df %>%
 month_temp
 ```
 
-### Chart C - GGPLOT Object showing Scatterplot with Min_Temperatures and Max_Temperatures by Year
+### Chart C - Scatterplot with Min_Temperatures and Max_Temperatures by Year
 
 ```{r}
 maxmin_plot = clean_noaa_df %>%
-  ggplot(aes(x = tmax, y = tmin, color = year)) +
-  geom_point() +
-  labs(title = "Max vs Min by year",
-       x = "Max Temp (C)",
-       y = "Min Temp (C)",
-       caption = "Data from NY NOAA.") +
-  theme(legend.position = "left")
+  mutate(text_label = str_c("Tmax: ºC ", tmax, "\nTmin: ºC ", tmin)) %>% 
+  plot_ly(
+    x = ~tmax, y = ~tmin, type = "scatter", mode = "markers",
+    color = ~factor(year, ordered = TRUE), text = ~text_label, alpha = 0.5) %>%
+  layout(xaxis = list(title = "Max Temp (C)"),
+         yaxis = list(title = "Min Temp (C)"))
 
-ggplotly(maxmin_plot)
+maxmin_plot
 ```
