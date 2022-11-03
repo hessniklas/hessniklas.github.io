@@ -46,7 +46,10 @@ Column {data-width=650}
 
 ```{r}
 max_temp = clean_noaa_df %>%
-  plot_ly(y = ~tmax, color = ~factor(year, ordered = TRUE), type = "box", colors = "viridis")
+  plot_ly(y = ~tmax, color = ~factor(year, ordered = TRUE), type = "box", 
+          colors = "viridis") %>%
+  layout(xaxis = list(title = "Years"),
+         yaxis = list(title = "Max Temp (C)"))
 
 max_temp
 ```
@@ -63,7 +66,10 @@ month_temp = clean_noaa_df %>%
   mutate(text_label = str_c("Tmax: ºC ", tmax, "\nTmin: ºC ", tmin)) %>% 
   plot_ly(
     x = ~month_date, y = ~tmin, type = "bar",
-    color = ~factor(year, order = TRUE), text = ~text_label, alpha = 0.5, colors = "viridis")
+    color = ~factor(year, order = TRUE), text = ~text_label, alpha = 0.5, 
+    colors = "viridis") %>%
+  layout(xaxis = list(title = "Months"),
+         yaxis = list(title = "Min Temp (C)"))
 
 month_temp
 ```
